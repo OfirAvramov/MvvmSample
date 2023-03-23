@@ -7,16 +7,18 @@
     xmlns:viewModels="clr-namespace:MvvmSample.ViewModels"
     x:DataType="viewModels:MainPageViewModel">
 
-    <Grid ColumnDefinitions="*,*" RowDefinitions="2*,*">
-
-        <CollectionView
+    <Grid ColumnDefinitions="*,*,*" RowDefinitions="2*,*,*">
+        <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}"
+            HorizontalOptions="Center"
+            Grid.ColumnSpan="2">
+            <CollectionView
             x:Name="collectionView"
-            Grid.ColumnSpan="2"
             Margin="15"
             ItemsSource="{Binding Students}">
             <CollectionView.EmptyView>
                 <StackLayout HorizontalOptions="Center">
-                    <Image
+                      
+                        <Image
                         BackgroundColor="Transparent"
                         HeightRequest="80"
                         Source="robot.jpg"
@@ -70,11 +72,25 @@
                                 FontSize="12"
                                 HorizontalTextAlignment="Center"
                                 Text="{Binding Age, StringFormat='{0:F1}'}" />
-                        </Grid>
+
+                            </Grid>
                     </Border>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+        </RefreshView>
+
+        <Entry
+                         Grid.Row="2"
+                            Grid.Column="0"
+                         Placeholder="Enter Name"
+                         Text="{Binding CurrentName}" />
+        <DatePicker Date="{Binding CurrentDate}"
+                        Grid.Row="2"
+                                    Grid.Column="1"/>
+        <Button Text="Submit" Command="{Binding AddStuCommand}"
+                                 Grid.Row="2"
+                            Grid.Column="2"/>
         <Button
             Margin="15"
             Command="{Binding LoadDataCommand}"
