@@ -66,4 +66,10 @@
 	  <None Remove="Resources\Images\yali.jpg" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiXaml Update="Views\TeachersPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>

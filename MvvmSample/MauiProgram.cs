@@ -1,4 +1,8 @@
-﻿namespace MvvmSample;
+﻿using MvvmSample.ViewModels;
+using MvvmSample.Views;
+using System;
+
+namespace MvvmSample;
 
 public static class MauiProgram
 {
@@ -13,6 +17,11 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
-		return builder.Build();
+		builder.Services.AddSingleton<MainPage>();
+        builder.Services.AddSingleton<MainPageViewModel>();
+        builder.Services.AddSingleton<TeachersPage>();
+        builder.Services.AddSingleton<TeachersViewModel>();
+
+        return builder.Build();
 	}
 }
